@@ -1,0 +1,9 @@
+{
+    "name": "ulysse/blogmvc",
+    "autoload": {
+        "psr-4": {
+            "Blogmvc\\": "src/"
+        }
+    },
+    "require": {}
+}
