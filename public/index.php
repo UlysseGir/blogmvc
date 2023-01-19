@@ -23,6 +23,6 @@ $router->post('/dashboard/nouveau/', "BlogController@store");
 // $router->post('/dashboard/:todo/task/:task', "TaskController@update");
 // $router->post('/dashboard/:todo/task/:task/check', "TaskController@check");
 // $router->post('/dashboard/:todo/', "TodoController@update");
-// $router->post('/dashboard/:todo/delete/', "TodoController@delete");
+$router->get('/dashboard/:id/delete/', "BlogController@delete");
 
 $router->run();

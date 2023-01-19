@@ -42,21 +42,19 @@ class BlogManager {
     //     ));
     // }
 
-    // public function delete($slug) {
+    public function delete($slug) {
 
-    //     $stmt = $this->bdd->prepare("DELETE FROM Blogs WHERE id = ? AND user_id = ?");
-    //     $stmt->execute(array(
-    //         $_POST["idList"],
-    //         $_SESSION["user"]["id"]
-    //     ));
-    // }
+        $stmt = $this->bdd->prepare("DELETE FROM Blogs WHERE id = ? AND user_id = ?");
+        $stmt->execute(array(
+            $_GET["id"],
+            $_SESSION["user"]["id"]
+        ));
+    }
 
     public function getAll()
     {
-        $stmt = $this->bdd->prepare('SELECT * FROM Blogs WHERE user_id = ?');
-        $stmt->execute(array(
-            $_SESSION["user"]["id"]
-        ));
+        $stmt = $this->bdd->prepare('SELECT * FROM Blogs');
+        $stmt->execute(array());
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS,"Blogmvc\Models\Blog");
     }

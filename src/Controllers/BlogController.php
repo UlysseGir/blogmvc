@@ -78,15 +78,15 @@ class BlogController {
     //     }
     // }
 
-    // public function delete($slug)
-    // {
-    //     if (!isset($_SESSION["user"]["username"])) {
-    //         header("Location: /login");
-    //         die();
-    //     }
-    //     $this->manager->delete($slug);
-    //     header("Location: /dashboard");
-    // }
+    public function delete($slug)
+    {
+        if (!isset($_SESSION["user"]["username"])) {
+            header("Location: /login");
+            die();
+        }
+        $this->manager->delete($slug);
+        header("Location: /dashboard");
+    }
 
     public function showAll() {
         if (!isset($_SESSION["user"]["username"])) {

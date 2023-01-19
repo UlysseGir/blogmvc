@@ -20,9 +20,17 @@ ob_start();
                         <div class="card">
                             <div class="top">
                                 <p><?php echo escape($todo->getName()); ?></p>
-                                <a href="/dashboard/<?php echo escape($todo->getName()); ?>"><i class="fas fa-eye"></i></a>
+                                <div>
+                                    <a style="color:white; margin-right:15px" href="/dashboard/<?php echo escape($todo->getName()); ?>"><i class="fas fa-eye"></i></a>
+                                    <?php if($_SESSION["user"]["id"] == $todo->getUser_Id()){ ?>
+                                    <a style="color:white;" href="/dashboard/<?php echo escape($todo->getId()); ?>/delete"><i class="fas fa-trash"></i></a>
+                                    <?php } ?>
+                                </div>
                             </div>
                             <div class="separateur"></div>
+                            <div>
+                                <p style="color: white;"><?php echo escape($todo->getCom()); ?></p>
+                            </div>
                             <div class="bottom">
                                 
                             </div>
