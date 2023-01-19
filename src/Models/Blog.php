@@ -7,7 +7,7 @@ class Blog {
     private $id;
     private $name;
     private $user_id;
-    private $tasks = [];
+    private $com;
 
     public function getId() {
         return $this->id;
@@ -21,6 +21,10 @@ class Blog {
         return $this->user_id;
     }
 
+    public function getCom() {
+        return $this->com;
+    }
+
     public function setId(Int $id) {
         $this->id = $id;
     }
@@ -31,6 +35,10 @@ class Blog {
 
     public function setUser_id(String $user_id) {
         $this->user_id = $user_id;
+    }
+
+    public function setCom(String $com) {
+        $this->com = $com;
     }
 
     // public function tasks()

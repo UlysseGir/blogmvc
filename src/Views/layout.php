@@ -39,7 +39,7 @@
 
                         <div class="hoverLink">
                             <a href="/dashboard" class="icon"><i class="fas fa-list-alt"></i></a>
-                            <p class="hidden">Todolist</p>
+                            <p class="hidden">Blog</p>
                         </div>
 
                         <div class="hoverLink">

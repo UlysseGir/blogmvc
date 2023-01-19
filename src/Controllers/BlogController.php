@@ -19,38 +19,38 @@ class BlogController {
         require VIEWS . 'Blog/homepage.php';
     }
 
-    // public function create() {
-    //     if (!isset($_SESSION["user"]["username"])) {
-    //         header("Location: /login");
-    //         die();
-    //     }
-    //     require VIEWS . 'Todo/create.php';
-    // }
+    public function create() {
+        if (!isset($_SESSION["user"]["username"])) {
+            header("Location: /login");
+            die();
+        }
+        require VIEWS . 'Blog/create.php';
+    }
 
-    // public function store() {
-    //     if (!isset($_SESSION["user"]["username"])) {
-    //         header("Location: /login");
-    //         die();
-    //     }
-    //     $this->validator->validate([
-    //         "name"=>["required", "min:2", "alphaNumDash"]
-    //     ]);
-    //     $_SESSION['old'] = $_POST;
+    public function store() {
+        if (!isset($_SESSION["user"]["username"])) {
+            header("Location: /login");
+            die();
+        }
+        $this->validator->validate([
+            "name"=>["required", "min:2", "alphaNumDash"]
+        ]);
+        $_SESSION['old'] = $_POST;
 
-    //     if (!$this->validator->errors()) {
-    //         $res = $this->manager->find($_POST["name"], $_SESSION["user"]["id"]);
+        if (!$this->validator->errors()) {
+            $res = $this->manager->find($_POST["name"], $_SESSION["user"]["id"]);
 
-    //         if (empty($res)) {
-    //             $this->manager->store();
-    //             header("Location: /dashboard/" . $_POST["name"]);
-    //         } else {
-    //             $_SESSION["error"]['name'] = "Le nom de la liste est déjà utilisé !";
-    //             header("Location: /dashboard/nouveau");
-    //         }
-    //     } else {
-    //         header("Location: /dashboard/nouveau");
-    //     }
-    // }
+            if (empty($res)) {
+                $this->manager->store();
+                header("Location: /dashboard/" . $_POST["name"]);
+            } else {
+                $_SESSION["error"]['name'] = "Le nom de la liste est déjà utilisé !";
+                header("Location: /dashboard/nouveau");
+            }
+        } else {
+            header("Location: /dashboard/nouveau");
+        }
+    }
 
     // public function update($slug) {
     //     if (!isset($_SESSION["user"]["username"])) {
@@ -88,26 +88,26 @@ class BlogController {
     //     header("Location: /dashboard");
     // }
 
-    // public function showAll() {
-    //     if (!isset($_SESSION["user"]["username"])) {
-    //         header("Location: /login");
-    //         die();
-    //     }
-    //     $todos = $this->manager->getAll();
+    public function showAll() {
+        if (!isset($_SESSION["user"]["username"])) {
+            header("Location: /login");
+            die();
+        }
+        $todos = $this->manager->getAll();
 
-    //     require VIEWS . 'Todo/index.php';
-    // }
+        require VIEWS . 'Blog/index.php';
+    }
 
-    // public function show($slug) {
-    //     if (!isset($_SESSION["user"]["username"])) {
-    //         header("Location: /login");
-    //         die();
-    //     }
-    //     $todo = $this->manager->find($slug, $_SESSION["user"]["id"]);
-    //     if (!$todo) {
-    //         header("Location: /error");
-    //     }
-    //     require VIEWS . 'Todo/show.php';
-    // }
+    public function show($slug) {
+        if (!isset($_SESSION["user"]["username"])) {
+            header("Location: /login");
+            die();
+        }
+        $todo = $this->manager->find($slug, $_SESSION["user"]["id"]);
+        if (!$todo) {
+            header("Location: /error");
+        }
+        require VIEWS . 'Blog/show.php';
+    }
 
 }

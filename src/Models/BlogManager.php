@@ -14,7 +14,7 @@ class BlogManager {
 
     public function find($name, $userId)
     {
-        $stmt = $this->bdd->prepare("SELECT * FROM List WHERE name = ? AND user_id = ?");
+        $stmt = $this->bdd->prepare("SELECT * FROM Blogs WHERE name = ? AND user_id = ?");
         $stmt->execute(array(
             $name,
             $userId
@@ -25,34 +25,35 @@ class BlogManager {
     }
 
     public function store() {
-        $stmt = $this->bdd->prepare("INSERT INTO List(name, user_id) VALUES (?, ?)");
+        $stmt = $this->bdd->prepare("INSERT INTO Blogs(name, user_id, com) VALUES (?, ?, ?)");
         $stmt->execute(array(
             $_POST["name"],
-            $_SESSION["user"]["id"]
+            $_SESSION["user"]["id"],
+            $_POST["com"]
         ));
     }
 
-    public function update($slug) {
-        $stmt = $this->bdd->prepare("UPDATE List SET name = ? WHERE name = ? AND user_id = ?");
-        $stmt->execute(array(
-            $_POST['nameTodo'],
-            $slug,
-            $_SESSION["user"]["id"]
-        ));
-    }
+    // public function update($slug) {
+    //     $stmt = $this->bdd->prepare("UPDATE Blogs SET name = ? WHERE name = ? AND user_id = ?");
+    //     $stmt->execute(array(
+    //         $_POST['nameTodo'],
+    //         $slug,
+    //         $_SESSION["user"]["id"]
+    //     ));
+    // }
 
-    public function delete($slug) {
+    // public function delete($slug) {
 
-        $stmt = $this->bdd->prepare("DELETE FROM List WHERE id = ? AND user_id = ?");
-        $stmt->execute(array(
-            $_POST["idList"],
-            $_SESSION["user"]["id"]
-        ));
-    }
+    //     $stmt = $this->bdd->prepare("DELETE FROM Blogs WHERE id = ? AND user_id = ?");
+    //     $stmt->execute(array(
+    //         $_POST["idList"],
+    //         $_SESSION["user"]["id"]
+    //     ));
+    // }
 
     public function getAll()
     {
-        $stmt = $this->bdd->prepare('SELECT * FROM List WHERE user_id = ?');
+        $stmt = $this->bdd->prepare('SELECT * FROM Blogs WHERE user_id = ?');
         $stmt->execute(array(
             $_SESSION["user"]["id"]
         ));

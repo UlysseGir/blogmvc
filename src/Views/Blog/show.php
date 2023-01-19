@@ -21,66 +21,26 @@ ob_start();
     <div class="viewList">
        <div class="top">
            <div class="enleveTodolist">
-               <div class="showEdit">
+               <div>
                 <p class="nameList"><?php echo escape($todo->getName()); ?></p>
-                <p class="hoverInfo">Edit Tache</p>
                </div>
            </div>
-
-           <div class="afficheInput hiddenEdit">
-               <form class="formEdit" action="/dashboard/<?php echo escape($todo->getName()); ?>" method="post">
-                   <div class="labelInput">
-                       <label for="nameTodo"><i class="fas fa-pen"></i></label>
-                       <input type="text" name="nameTodo" value="<?php echo old("nameTodo") ? old("nameTodo") : escape($todo->getName());?>" placeholder="edit todo">
-                   </div>
-                   <button type="submit" name="button"><i class="fas fa-check"></i></button>
-               </form>
-               <p id="btnDeleteList"><i class="fas fa-trash"></i></p>
-           </div>
-
-           <span class="error"><?php echo error("nameTodo");?></span>
        </div>
 
        <div class="separateur"></div>
+       <div>
+            <p><?php echo escape($todo->getCom()); ?></p>
+       </div>
 
        <div class="bottom">
-
             
-
-            <div class="blockForm">
-                <form action="/dashboard/task/nouveau" method="post">
-                    <i class="iconTask fas fa-tasks"></i>
-                    <input type="text" name="nameTask" value="<?php echo old("nameTask");?>" placeholder="create task">
-                    <input type="hidden" name="nameList" value="<?php echo $todo->getName(); ?>">
-                    <input type="hidden" name="list_id" value="<?php echo $todo->getId(); ?>">
-                    <!-- create task -->
-                    <button type="submit" name="button"><i class="fas fa-plus"></i></button> 
-                </form>
-                <span class="error"><?php echo error("nameTask");?></span>
-            </div>
-
-            <div class="blockTask">
-                <?php
-                foreach($todo->tasks() as $key => $task){
-                ?>
-                <!-- task here -->
-                <div class="task">
-                    <div class="nameTask">
-                        <p><?php echo escape($task->getName()); ?></p>
-                    </div>
-                    
-                </div>
-                <?php
-                }
-                ?>
-            </div>
        </div>
     </div>
 </section>
 
 
 
-<script>
+<!-- <script>
 let showEdit = document.getElementsByClassName('showEdit');
 
 let enleveTodolist = document.getElementsByClassName('enleveTodolist');
@@ -107,7 +67,7 @@ btnUndoDel.addEventListener('click', function() {
   modalDelete.style.display = 'none';
 });
 
-</script>
+</script> -->
 
 <?php
 

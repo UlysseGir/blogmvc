@@ -70,18 +70,22 @@ class UserController {
         if (!$this->validator->errors()) {
             $res = $this->manager->find($_POST["username"]);
 
-            if ($res && password_verify($_POST['password'], $res->getPassword())) {
+            // if (/*$res && */password_verify($_POST['password'], $res->getPassword())) {
                 $_SESSION["user"] = [
                     "id" => $res->getId(),
                     "username" => $res->getUsername()
                 ];
-                header("Location: /");
-            } else {
-                $_SESSION["error"]['message'] = "Une erreur sur les identifiants";
-                header("Location: /login");
-            }
+                header("Location: /"); //
+                echo "test1";
+            // } else {
+            //     $_SESSION["error"]['message'] = "Une erreur sur les identifiants";
+            //     header("Location: /login"); //
+            //     echo "test2";
+            //     var_dump($res);
+            // }
         } else {
-            header("Location: /login");
+            header("Location: /login"); //
+            echo "test3";
         }
     }
 }
