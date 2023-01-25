@@ -46,7 +46,7 @@ class BlogManager {
 
         $stmt = $this->bdd->prepare("DELETE FROM Blogs WHERE id = ? AND user_id = ?");
         $stmt->execute(array(
-            $_GET["id"],
+            $slug,
             $_SESSION["user"]["id"]
         ));
     }
